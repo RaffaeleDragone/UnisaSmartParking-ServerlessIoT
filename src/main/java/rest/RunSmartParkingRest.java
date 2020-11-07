@@ -93,7 +93,7 @@ public class RunSmartParkingRest {
     }
 
     private static void deleteDbNoSQL(String name_db) {
-        MongoClient mongoClient = new MongoClient("0.0.0.0");
+        MongoClient mongoClient = new MongoClient("192.168.1.199",27018);
         MongoDatabase database = mongoClient.getDatabase(name_db);
         if(database!=null){
             database.drop();
@@ -104,7 +104,7 @@ public class RunSmartParkingRest {
     private static void createDbNoSQL(String name_db, JSONArray sensorsArea1, JSONArray sensorsArea2) {
         Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
         mongoLogger.setLevel(Level.SEVERE);
-        MongoClient mongoClient = new MongoClient("0.0.0.0");
+        MongoClient mongoClient = new MongoClient("192.168.1.199",27018);
         MongoDatabase database = mongoClient.getDatabase(name_db);
 
         String[] areas=new String[]{"1","2"};
