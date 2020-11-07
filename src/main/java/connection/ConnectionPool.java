@@ -14,7 +14,7 @@ import java.util.*;
 
 public class ConnectionPool {
 
-    private static MongoClient mongoClient = new MongoClient("192.168.1.199",27018);
+    private static MongoClient mongoClient = new MongoClient("host.docker.internal",27018);
     private static MongoDatabase database = mongoClient.getDatabase(RunSmartParkingRest.DB_NAME);
 
     public static void changeSpotState(Spot spot){
