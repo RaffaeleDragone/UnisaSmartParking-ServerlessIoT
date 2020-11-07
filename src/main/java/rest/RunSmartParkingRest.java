@@ -4,7 +4,6 @@ package rest;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import connection.ConnectionPool;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.bson.Document;
 import org.glassfish.grizzly.http.server.HttpServer;
@@ -15,17 +14,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.net.URI;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -38,7 +30,7 @@ import java.util.logging.Logger;
 public class RunSmartParkingRest {
     // Base URI the Grizzly HTTP server will listen on
 
-    public static final String BASE_URI = "http://localhost:8080/unisasmartparkingrest/";
+    public static final String BASE_URI = "http://0.0.0.0:8080/unisasmartparkingrest/";
     public static final String DB_NAME="unisaSmartParking";
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
@@ -69,9 +61,6 @@ public class RunSmartParkingRest {
         deleteDbNoSQL(DB_NAME);
         createDbNoSQL(DB_NAME,sensorsArea1,sensorsArea2);
 
-        Socket socket = new Socket();
-        socket.connect(new InetSocketAddress("google.com", 80));
-        System.out.println(socket.getLocalAddress());
 
         final HttpServer server = startServer();
         System.out.println(String.format("Jersey app started with WADL available at "
@@ -104,7 +93,7 @@ public class RunSmartParkingRest {
     }
 
     private static void deleteDbNoSQL(String name_db) {
-        MongoClient mongoClient = new MongoClient();
+        MongoClient mongoClient = new MongoClient("0.0.0.0");
         MongoDatabase database = mongoClient.getDatabase(name_db);
         if(database!=null){
             database.drop();
@@ -115,7 +104,7 @@ public class RunSmartParkingRest {
     private static void createDbNoSQL(String name_db, JSONArray sensorsArea1, JSONArray sensorsArea2) {
         Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
         mongoLogger.setLevel(Level.SEVERE);
-        MongoClient mongoClient = new MongoClient();
+        MongoClient mongoClient = new MongoClient("0.0.0.0");
         MongoDatabase database = mongoClient.getDatabase(name_db);
 
         String[] areas=new String[]{"1","2"};

@@ -14,7 +14,7 @@ import java.util.*;
 
 public class ConnectionPool {
 
-    private static MongoClient mongoClient = new MongoClient();
+    private static MongoClient mongoClient = new MongoClient("0.0.0.0");
     private static MongoDatabase database = mongoClient.getDatabase(RunSmartParkingRest.DB_NAME);
 
     public static void changeSpotState(Spot spot){
