@@ -1,0 +1,30 @@
+metadata:
+  name: mqttupdatespoststatearea2
+  labels:
+    nuclio.io/project-name: b3e9d2c4-ab0b-483e-9fe3-fd02c8f235f6
+spec:
+  description: "Function the is called when a new message is arrived on the iot/unisasmartparking/area2 queue, //the function send the raw data to an external api rest ."
+  handler: "main:handler"
+  runtime: nodejs
+  resources: {}
+  image: "nuclio/processor-mqttupdatespoststatearea2:latest"
+  minReplicas: 1
+  maxReplicas: 1
+  targetCPU: 75
+  triggers:
+    myMqttTrigger:
+      class: ""
+      kind: mqtt
+      url: "guest:guest@192.168.1.199:1883"
+      attributes:
+        subscriptions:
+          - qos: 0
+            topic: iot/unisasmartparking/area2
+  version: 1
+  build:
+    functionSourceCode: CmNvbnN0IGh0dHAgPSByZXF1aXJlKCdodHRwJyk7CnZhciBkYXRhOwpleHBvcnRzLmhhbmRsZXIgPSBmdW5jdGlvbihjb250ZXh0LCBldmVudCkgewogICAgCiAgICB2YXIgX2V2ZW50ID0gSlNPTi5wYXJzZShKU09OLnN0cmluZ2lmeShldmVudCkpOwogICAgdmFyIF9kYXRhID0gYmluMnN0cmluZyhfZXZlbnQuYm9keS5kYXRhKTsKICAgIC8vdmFyIF9kYXRhPSJDU1Y7MTsxO2J1c3kiOwogICAgaWYoKF9kYXRhKyIiKS5zdGFydHNXaXRoKCJDU1YiKSl7CiAgICAgICAgCiAgICAgICAgdmFyIHNwbD0gX2RhdGEuc3BsaXQoIjsiKTsgLy8gQ1NWO2lkX3NlbnNvcjtzdGF0ZQogICAgICAgIHZhciBqc29uX29ial9zZW5kID0gIntpZF9zZW5zb3I6JyIrc3BsWzFdKyInLHN0YXRlOiciK3NwbFsyXSsiJyxhcmVhOicyJ30iOwogICAgICAgIGRhdGEgPSBqc29uX29ial9zZW5kOwogICAgfWVsc2V7CiAgICAgICAgZGF0YT1fZGF0YTsgLy8gSXMgYWxyZWFkeSBkZWZpbmVkCiAgICB9CiAgICAKCiAgICBjb250ZXh0LmxvZ2dlci5pbmZvKCJhIik7CiAgICB2YXIgb3B0aW9ucyA9IHsKICAgICAgICBob3N0OiAnMTkyLjE2OC4xLjE5OScsCiAgICAgICAgcG9ydDogODA4MCwKICAgICAgICBwYXRoOiAnL3VuaXNhc21hcnRwYXJraW5ncmVzdC9hcGkvdXBkYXRlU3RhdGUnLAogICAgICAgIG1ldGhvZDogJ1BVVCcsCiAgICAgICAgaGVhZGVyczogewogICAgICAgICAgICAnQ29udGVudC1UeXBlJzogJ2FwcGxpY2F0aW9uL2pzb24nLAogICAgICAgICAgICAnQ29udGVudC1MZW5ndGgnOiBkYXRhLmxlbmd0aAogICAgICAgIH0KICAgIH07CgogICAgdmFyIHJlcSA9IGh0dHAucmVxdWVzdChvcHRpb25zLCBmdW5jdGlvbihyZXMpIHsKICAgICAgICBjb250ZXh0LmxvZ2dlci5pbmZvKCdTVEFUVVM6ICcgKyByZXMuc3RhdHVzQ29kZSk7CiAgICAgICAgY29udGV4dC5sb2dnZXIuaW5mbygnSEVBREVSUzogJyArIEpTT04uc3RyaW5naWZ5KHJlcy5oZWFkZXJzKSk7CiAgICAgICAgcmVzLnNldEVuY29kaW5nKCd1dGY4Jyk7CiAgICAgICAgcmVzLm9uKCdkYXRhJywgZnVuY3Rpb24gKGNodW5rKSB7CiAgICAgICAgICAgIGNvbnRleHQubG9nZ2VyLmluZm8oJ0JPRFk6ICcgKyBjaHVuayk7CiAgICAgICAgICAgIGNvbnRleHQuY2FsbGJhY2soIk9LIik7CiAgICAgICAgfSk7CiAgICB9KTsKCiAgICByZXEub24oJ2Vycm9yJywgZnVuY3Rpb24oZSkgewogICAgICAgIGNvbnRleHQubG9nZ2VyLmluZm8oJ3Byb2JsZW0gd2l0aCByZXF1ZXN0OiAnICsgZS5tZXNzYWdlKTsKICAgICAgICBjb250ZXh0LmNhbGxiYWNrKCJLTyIpCiAgICB9KTsKICAgIHJlcS53cml0ZShkYXRhKTsKICAgIHJlcS5lbmQoKTsKCgp9OwoKZnVuY3Rpb24gYmluMnN0cmluZyhhcnJheSl7CiAgICB2YXIgcmVzdWx0ID0gIiI7CiAgICBmb3IodmFyIGkgPSAwOyBpIDwgYXJyYXkubGVuZ3RoOyArK2kpewogICAgICAgIHJlc3VsdCs9IChTdHJpbmcuZnJvbUNoYXJDb2RlKGFycmF5W2ldKSk7CiAgICB9CiAgICByZXR1cm4gcmVzdWx0Owp9
+    runtimeAttributes:
+      repositories: []
+    codeEntryType: sourceCode
+  platform: {}
+  readinessTimeoutSeconds: 60
