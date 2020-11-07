@@ -66,9 +66,13 @@ public class ConnectionPool {
                 spot.setId(Long.valueOf(dSpot.getInteger("id")));
                 spot.setState(dSpot.getString("state"));
                 spot.setLastChange(dSpot.getDate("lastChange"));
+                spot.setX(dSpot.getString("x"));
+                spot.setY(dSpot.getString("y"));
+                spot.setFillColor("");
                 list.add(spot);
             }
         }
         return list;
     }
+
 }

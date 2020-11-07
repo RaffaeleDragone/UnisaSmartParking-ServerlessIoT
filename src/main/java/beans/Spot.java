@@ -11,15 +11,42 @@ import java.util.Date;
 
 public class Spot {
 
-    String area, state;
+    String area, state, fillColor, x,y;
     Date lastChange;
     Long id;
 
-    public Spot(String area, String state, Date lastChange, Long id) {
+    public Spot(String area, String state, String fillColor, String x, String y, Date lastChange, Long id) {
         this.area = area;
         this.state = state;
+        this.fillColor = fillColor;
+        this.x = x;
+        this.y = y;
         this.lastChange = lastChange;
         this.id = id;
+    }
+
+    public String getFillColor() {
+        return fillColor;
+    }
+
+    public void setFillColor(String fillColor) {
+        this.fillColor = fillColor;
+    }
+
+    public String getX() {
+        return x;
+    }
+
+    public void setX(String x) {
+        this.x = x;
+    }
+
+    public String getY() {
+        return y;
+    }
+
+    public void setY(String y) {
+        this.y = y;
     }
 
     public Spot(){
@@ -63,6 +90,9 @@ public class Spot {
         return "Spot{" +
                 "area='" + area + '\'' +
                 ", state='" + state + '\'' +
+                ", fillColor='" + fillColor + '\'' +
+                ", x='" + x + '\'' +
+                ", y='" + y + '\'' +
                 ", lastChange=" + lastChange +
                 ", id=" + id +
                 '}';

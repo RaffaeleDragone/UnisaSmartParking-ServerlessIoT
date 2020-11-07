@@ -5,7 +5,9 @@ import beans.Spot;
 import com.mongodb.MongoClient;
 import com.mongodb.client.model.geojson.GeoJsonObjectType;
 import connection.ConnectionPool;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Application;
@@ -16,9 +18,9 @@ import java.util.List;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("testrest")
+@Path("api")
 public class ParkingRest {
-
+    Logger logger=Logger.getLogger(ParkingRest.class);
     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
@@ -30,25 +32,27 @@ public class ParkingRest {
     @Path("/getArea/area={area}")
     public String getSensorsFromArea(@PathParam("area") String area) {
         List<Spot> spots = ConnectionPool.getSpotsFromArea(area);
-        for(Spot s : spots){
-            System.out.println(s);
-        }
         JSONArray jsArr=new JSONArray(spots);
+        logger.info("Size array : "+jsArr.length());
+        //return "5";
         return jsArr.toString();
     }
 
     @PUT
     @Produces("application/json")
-    @Path("/updateState/area={area}&id={id}&state={state}")
-    public String updateState(@PathParam("area") String area, @PathParam("id") String id,@PathParam("state") String state) {
-
-        Spot spot=new Spot();
-        spot.setId(Long.valueOf(id));
-        spot.setArea(area);
-        spot.setState(state);
-
-        ConnectionPool.changeSpotState(spot);
-        return "{response:'ok'}";
+    @Path("/updateState")
+    public String updateState(String json_obj) {
+        JSONObject json_spot = new JSONObject(json_obj);
+        if(json_spot!=null && json_spot.get("id_sensor")!=null){
+            Spot sp=new Spot();
+            sp.setId(Long.valueOf(json_spot.get("id_sensor")+""));
+            sp.setState(json_spot.get("state")+"");
+            sp.setArea(json_spot.get("area")+"");
+            ConnectionPool.changeSpotState(sp);
+            logger.info("Updated");
+            return "{response:'ok'}";
+        }
+        return "{response:'ko'}";
     }
 
 
