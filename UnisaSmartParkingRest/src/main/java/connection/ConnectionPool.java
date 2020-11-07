@@ -37,8 +37,7 @@ public class ConnectionPool {
         Document dSpot= docIterator.iterator().next();
 
         if(dSpot!=null ){
-            Date lastUpdt = dSpot.getDate("lastChange");
-            if(lastUpdt.before(spot.getLastChange())){
+
                 Document dNew=new Document();
                 String state = dSpot.getString("state");
                 dNew.put("state",spot.getState());
@@ -47,7 +46,6 @@ public class ConnectionPool {
                 Bson bUpdate = new Document(dNew);
                 Bson updateDocument = new Document("$set", bUpdate);
                 spotsCollection.updateOne(dSpot,updateDocument);
-            }
         }
     }
 

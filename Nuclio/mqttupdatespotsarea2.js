@@ -1,22 +1,20 @@
-
 const http = require('http');
-var data;
+var data={};
 exports.handler = function(context, event) {
 
     var _event = JSON.parse(JSON.stringify(event));
     var _data = bin2string(_event.body.data);
-
+    //var _data="CSV;1;1;busy";
     if((_data+"").startsWith("CSV")){
 
         var spl= _data.split(";"); // CSV;id_sensor;state
         var json_obj_send = "{id_sensor:'"+spl[1]+"',state:'"+spl[2]+"',area:'2'}";
         data = json_obj_send;
     }else{
-        data=_data; // Is already defined
+        data=_data; //already defined
     }
 
 
-    context.logger.info("a");
     var options = {
         host: '192.168.1.199',
         port: 8080,

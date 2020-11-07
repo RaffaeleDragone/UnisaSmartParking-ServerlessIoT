@@ -41,6 +41,7 @@ public class ParkingRest {
     @Produces("application/json")
     @Path("/updateState")
     public String updateState(String json_obj) {
+        logger.info("Enter Update Function");
         JSONObject json_spot = new JSONObject(json_obj);
         if(json_spot!=null && json_spot.get("id_sensor")!=null){
             Spot sp=new Spot();
