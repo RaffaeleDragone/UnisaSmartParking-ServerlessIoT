@@ -1,0 +1,84 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "unisa smart parking",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "RequestInfoAreaIntent",
+          "slots": [
+            {
+              "name": "n_area",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{n_area}"
+              ]
+            }
+          ],
+          "samples": [
+            "how many parking spots are available",
+            "how many parking spots are available in area {n_area}"
+          ]
+        }
+      ],
+      "types": [],
+      "modelConfiguration": {
+        "fallbackIntentSensitivity": {
+          "level": "LOW"
+        }
+      }
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "RequestInfoAreaIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "n_area",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.597139994528.1392882524908"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.597139994528.1392882524908",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "yes but, in which area?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "3"
+}
