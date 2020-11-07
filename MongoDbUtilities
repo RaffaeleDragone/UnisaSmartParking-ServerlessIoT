@@ -1,6 +1,0 @@
-brew services start mongodb-community@4.2
-brew services stop mongodb-community@4.2
-
-To run MongoDB (i.e. the mongod process) manually as a background process, issue the following:
-mongod --config /usr/local/etc/mongod.conf --fork
-
