@@ -35,9 +35,7 @@ public class ConnectionPool {
         FindIterable<Document> docIterator = spotsCollection.find().filter(filter);
 
         Document dSpot= docIterator.iterator().next();
-
         if(dSpot!=null ){
-
                 Document dNew=new Document();
                 String state = dSpot.getString("state");
                 dNew.put("state",spot.getState());

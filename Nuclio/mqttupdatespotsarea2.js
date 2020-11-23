@@ -4,7 +4,7 @@ exports.handler = function(context, event) {
 
     var _event = JSON.parse(JSON.stringify(event));
     var _data = bin2string(_event.body.data);
-    //var _data="CSV;1;1;busy";
+    //var _data="CSV;1;busy";
     if((_data+"").startsWith("CSV")){
 
         var spl= _data.split(";"); // CSV;id_sensor;state
