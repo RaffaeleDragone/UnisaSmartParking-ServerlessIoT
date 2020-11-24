@@ -3,7 +3,7 @@ const axios = require('axios');
 module.exports = {
      getListSensors(area) {
        
-        //const endpoint = 'http://138.201.126.21:8010/forclick/gen/open_esistenza_articolo/'+codice;
+        
         const endpoint = 'http://87.17.2.193:8080/unisasmartparkingrest/api/getArea/area='+area;
         //const url = endpoint + '?query=' + encodeURIComponent(sparqlQuery);
         const url = endpoint ;
