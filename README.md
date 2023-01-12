@@ -26,4 +26,4 @@ With a web application it will be possible to view the map of the parking lot, a
 
 **Architecture**
 
-![architecture](/Users/raffaeledragone/Sviluppo/UnisaWs/ServerlessIoT/UnisaSmartParking-ServerlessIoT/architecture.png)
+![architecture](architecture.png)
